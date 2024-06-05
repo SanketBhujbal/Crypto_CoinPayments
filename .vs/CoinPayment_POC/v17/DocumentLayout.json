@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A4990467-4151-45A6-848A-E42018E91F3B}|CoinPayment_POC\\CoinPayment_POC.csproj|c:\\users\\bhujbalsa\\source\\repos\\coinpayment_poc\\coinpayment_poc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A4990467-4151-45A6-848A-E42018E91F3B}|CoinPayment_POC\\CoinPayment_POC.csproj|solutionrelative:coinpayment_poc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4990467-4151-45A6-848A-E42018E91F3B}|CoinPayment_POC\\CoinPayment_POC.csproj|c:\\users\\bhujbalsa\\source\\repos\\coinpayment_poc\\coinpayment_poc\\views\\coinpayments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A4990467-4151-45A6-848A-E42018E91F3B}|CoinPayment_POC\\CoinPayment_POC.csproj|solutionrelative:coinpayment_poc\\views\\coinpayments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4990467-4151-45A6-848A-E42018E91F3B}|CoinPayment_POC\\CoinPayment_POC.csproj|c:\\users\\bhujbalsa\\source\\repos\\coinpayment_poc\\coinpayment_poc\\controllers\\coinpaymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4990467-4151-45A6-848A-E42018E91F3B}|CoinPayment_POC\\CoinPayment_POC.csproj|solutionrelative:coinpayment_poc\\controllers\\coinpaymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4990467-4151-45A6-848A-E42018E91F3B}|CoinPayment_POC\\CoinPayment_POC.csproj|c:\\users\\bhujbalsa\\source\\repos\\coinpayment_poc\\coinpayment_poc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A4990467-4151-45A6-848A-E42018E91F3B}|CoinPayment_POC\\CoinPayment_POC.csproj|solutionrelative:coinpayment_poc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4990467-4151-45A6-848A-E42018E91F3B}|CoinPayment_POC\\CoinPayment_POC.csproj|c:\\users\\bhujbalsa\\source\\repos\\coinpayment_poc\\coinpayment_poc\\models\\ordermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4990467-4151-45A6-848A-E42018E91F3B}|CoinPayment_POC\\CoinPayment_POC.csproj|solutionrelative:coinpayment_poc\\models\\ordermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4990467-4151-45A6-848A-E42018E91F3B}|CoinPayment_POC\\CoinPayment_POC.csproj|c:\\users\\bhujbalsa\\source\\repos\\coinpayment_poc\\coinpayment_poc\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A4990467-4151-45A6-848A-E42018E91F3B}|CoinPayment_POC\\CoinPayment_POC.csproj|solutionrelative:coinpayment_poc\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OrderModel.cs",
+              "DocumentMoniker": "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\CoinPayment_POC\\Models\\OrderModel.cs",
+              "RelativeDocumentMoniker": "CoinPayment_POC\\Models\\OrderModel.cs",
+              "ToolTip": "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\CoinPayment_POC\\Models\\OrderModel.cs",
+              "RelativeToolTip": "CoinPayment_POC\\Models\\OrderModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T05:43:20.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\CoinPayment_POC\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "CoinPayment_POC\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\CoinPayment_POC\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "CoinPayment_POC\\wwwroot\\css\\site.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-06-03T11:31:03.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\CoinPayment_POC\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "CoinPayment_POC\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\CoinPayment_POC\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "CoinPayment_POC\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-03T11:25:07.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\CoinPayment_POC\\appsettings.json",
+              "RelativeDocumentMoniker": "CoinPayment_POC\\appsettings.json",
+              "ToolTip": "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\CoinPayment_POC\\appsettings.json",
+              "RelativeToolTip": "CoinPayment_POC\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-03T05:56:44.112Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\CoinPayment_POC\\Views\\CoinPayments\\Index.cshtml",
+              "RelativeDocumentMoniker": "CoinPayment_POC\\Views\\CoinPayments\\Index.cshtml",
+              "ToolTip": "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\CoinPayment_POC\\Views\\CoinPayments\\Index.cshtml",
+              "RelativeToolTip": "CoinPayment_POC\\Views\\CoinPayments\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-03T05:29:27.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CoinPaymentsController.cs",
+              "DocumentMoniker": "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\CoinPayment_POC\\Controllers\\CoinPaymentsController.cs",
+              "RelativeDocumentMoniker": "CoinPayment_POC\\Controllers\\CoinPaymentsController.cs",
+              "ToolTip": "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\CoinPayment_POC\\Controllers\\CoinPaymentsController.cs",
+              "RelativeToolTip": "CoinPayment_POC\\Controllers\\CoinPaymentsController.cs",
+              "ViewState": "AQIAAIgAAAAAAAAAAADwvzgAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-03T05:28:22.211Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
