@@ -6,7 +6,7 @@ namespace CoinPayment_POC.Models
     {
         public string OrderId { get; set; }
 
-        [DisplayName("Order Total")]
+        [DisplayName("Total Bill Amount")]
         public decimal OrderTotal { get; set; }
 
         [DisplayName("Product Name")]

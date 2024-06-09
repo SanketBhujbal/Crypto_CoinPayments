@@ -1,17 +1,49 @@
-﻿@*
+﻿@{
+    ViewData["Title"] = "Bill Summary";
+}@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    <form asp-controller="CoinPayments" asp-action="ProcessCheckout" method="get">
-        <div class="container">
+    <div class="container bg-light mt-5" style="border-top: 3px solid #26dadd">
+        <form class="text-center p-3" asp-controller="CoinPayments" asp-action="ProcessCheckout" method="get">
+            <h1 style="font-family: monospace,monospace; color: #2726dd;">
+                Bill Summary Conatining Total Amount to be Paid
+            </h1>
             <div class="row">
-                <div class="col-xs-6">
-                    <br />
-                    <img src="~/images/coinpayment.png" style="border: 1px solid" />
-                    <b>Price: $5</b>
-                    <input type="submit" value="Add To Cart" class="btn-primary">
+                <div class="col-4">
+                </div>
+                <div class="col-4">
+                <div class="row">
+                        <table class="table fw-bold">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Total Bill Amount:
+                                    </td>
+                                    <td>
+                                        $5
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Taxes: 
+                                    </td>
+                                    <td>
+                                        As applicable
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+                </div>
+                <div class="col-4">
                 </div>
             </div>
-        </div>
-    </form>
+            <input type="submit" value="Initiate Payment" class="btn rounded-pill text-dark box-shadow"
+                   style="font-family:monospace, monospace; font-size:18px; font-weight:bold; background-color:#ffbf3f">
+                   
+            
+        </form>
+    </div>
+    
 }

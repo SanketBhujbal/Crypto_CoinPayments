@@ -29,7 +29,7 @@ namespace CoinPayment_POC.Controllers
             {
                 OrderId = Guid.NewGuid().ToString(),
                 OrderTotal = 5,
-                ProductName = "Pay By crypto - CoinPayment",
+                ProductName = "Test payment - Pay By crypto currency",
                 FirstName = "Sanket",
                 LastName = "Bhujbal",
                 Email = "sanketbhujbal.sb@gmail.com"
@@ -54,20 +54,20 @@ namespace CoinPayment_POC.Controllers
             var queryParameters = new Dictionary<string, string>()
             {
                 //IPN settings  
-                ["ipn_version"] = "1.0",
-                ["cmd"] = "_pay_auto",
-                ["ipn_type"] = "simple",
-                ["ipn_mode"] = "hmac",
+                ["ipn_version"] = ConfigurationConstants.ipn_version,
+                ["cmd"] = ConfigurationConstants.cmd,
+                ["ipn_type"] = ConfigurationConstants.ipn_type,
+                ["ipn_mode"] = ConfigurationConstants.ipn_mode,
                 ["merchant"] = _configuration.GetSection("CoinPayments")["MerchantId"],
-                ["allow_extra"] = "0",
-                ["currency"] = "USD",
+                ["allow_extra"] = ConfigurationConstants.allow_extra,
+                ["currency"] = ConfigurationConstants.currency,
                 ["amountf"] = orderModel.OrderTotal.ToString("N2"),
                 ["item_name"] = orderModel.ProductName,
 
                 //IPN, success and cancel URL  
-                ["success_url"] = $"{storeLocation}/CoinPayments/SuccessHandler?orderNumber={orderModel.OrderId}",
-                ["ipn_url"] = $"{storeLocation}/CoinPayments/IPNHandler",
-                ["cancel_url"] = $"{storeLocation}/CoinPayments/CancelOrder",
+                ["success_url"] = $"{storeLocation}"+ ConfigurationConstants.success_url +"{orderModel.OrderId}",
+                ["ipn_url"] = $"{storeLocation}"+ ConfigurationConstants.ipn_url+" ",
+                ["cancel_url"] = $"{storeLocation}" + ConfigurationConstants.cancel_url + "",
 
                 //order identifier                  
                 ["custom"] = orderModel.OrderId,
@@ -107,13 +107,13 @@ namespace CoinPayment_POC.Controllers
             if (Helper.VerifyIpnResponse(strRequest, Request.Headers["hmac"], ipnSecret,
                 out Dictionary<string, string> values))
             {
-                values.TryGetValue("first_name", out string firstName);
-                values.TryGetValue("last_name", out string lastName);
-                values.TryGetValue("email", out string email);
-                values.TryGetValue("amount1", out string amount1);
-                values.TryGetValue("subtotal", out string subtotal);
-                values.TryGetValue("status", out string status);
-                values.TryGetValue("status_text", out string statusText);
+                values.TryGetValue(ConfigurationConstants.first_name, out string firstName);
+                values.TryGetValue(ConfigurationConstants.last_name, out string lastName);
+                values.TryGetValue(ConfigurationConstants.email, out string email);
+                values.TryGetValue(ConfigurationConstants.amount1, out string amount1);
+                values.TryGetValue(ConfigurationConstants.subtotal, out string subtotal);
+                values.TryGetValue(ConfigurationConstants.status, out string status);
+                values.TryGetValue(ConfigurationConstants.status_text, out string statusText);
 
                 var newPaymentStatus = Helper.GetPaymentStatus(status, statusText);
 
@@ -146,80 +146,6 @@ namespace CoinPayment_POC.Controllers
 
             //nothing should be rendered to visitor  
             return Content("");
-        }
-        public static class Helper
-        {
-            public static bool VerifyIpnResponse(string formString, string hmac, string ipnSecret, out Dictionary<string, string> values)
-            {
-                values = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-                foreach (var l in formString.Split('&'))
-                {
-                    var line = l.Trim();
-                    var equalPox = line.IndexOf('=');
-                    if (equalPox >= 0)
-                        values.Add(line.Substring(0, equalPox), line.Substring(equalPox + 1));
-                }
-
-                values.TryGetValue("merchant", out string merchant);
-
-                //verify hmac with secret  
-                if (!string.IsNullOrEmpty(merchant) && !string.IsNullOrEmpty(hmac))
-                {
-                    if (hmac.Trim() == HashHmac(formString, ipnSecret))
-                    {
-                        return true;
-                    }
-                    return false;
-                }
-                return false;
-            }
-
-            public static string HashHmac(string message, string secret)
-            {
-                Encoding encoding = Encoding.UTF8;
-                using (HMACSHA512 hmac = new HMACSHA512(encoding.GetBytes(secret)))
-                {
-                    var msg = encoding.GetBytes(message);
-                    var hash = hmac.ComputeHash(msg);
-                    return BitConverter.ToString(hash).ToLower().Replace("-", string.Empty);
-                }
-            }
-
-            public static PaymentStatus GetPaymentStatus(string paymentStatus, string pendingReason)
-            {
-                var result = PaymentStatus.Pending;
-
-                int status = Convert.ToInt32(paymentStatus);
-
-                switch (status)
-                {
-                    case 0:
-                        result = PaymentStatus.Pending;
-                        break;
-                    case 1:
-                        result = PaymentStatus.Authorized;
-                        break;
-                    case -1:
-                        result = PaymentStatus.Cancelled;
-                        break;
-                    case 100:
-                        result = PaymentStatus.Paid;
-                        break;
-                    default:
-                        break;
-                }
-                return result;
-            }
-        }
-        public enum PaymentStatus
-        {
-            Pending = 10,
-
-            Authorized = 20,
-
-            Paid = 30,
-
-            Cancelled = 50,
         }
     }
 }
