@@ -23,6 +23,7 @@ body {
 
 /* Add a black background color to the top navigation */
 .topnav {
+    font-family: monospace, monospace;
     background-color: #333;
     overflow: hidden;
 }
