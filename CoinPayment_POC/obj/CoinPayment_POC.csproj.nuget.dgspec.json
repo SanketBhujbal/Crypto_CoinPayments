@@ -1,38 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\CoinPayment_POC\\CoinPayment_POC.csproj": {}
+    "D:\\GIT Repos\\Crypto_CoinPayments\\CoinPayment_POC\\CoinPayment_POC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\CoinPayment_POC\\CoinPayment_POC.csproj": {
+    "D:\\GIT Repos\\Crypto_CoinPayments\\CoinPayment_POC\\CoinPayment_POC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\CoinPayment_POC\\CoinPayment_POC.csproj",
+        "projectUniqueName": "D:\\GIT Repos\\Crypto_CoinPayments\\CoinPayment_POC\\CoinPayment_POC.csproj",
         "projectName": "CoinPayment_POC",
-        "projectPath": "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\CoinPayment_POC\\CoinPayment_POC.csproj",
-        "packagesPath": "C:\\Users\\bhujbalsa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bhujbalsa\\source\\repos\\CoinPayment_POC\\CoinPayment_POC\\obj\\",
+        "projectPath": "D:\\GIT Repos\\Crypto_CoinPayments\\CoinPayment_POC\\CoinPayment_POC.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\GIT Repos\\Crypto_CoinPayments\\CoinPayment_POC\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\bhujbalsa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nexus.nprd-speedpay.com/repository/Speedpay-NuGet-Group/": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -40,16 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "imports": [
             "net461",
             "net462",
@@ -69,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

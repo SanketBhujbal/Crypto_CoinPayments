@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ConversionModel
+
+@{
     ViewData["Title"] = "Bill Summary";
 }@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -39,11 +41,76 @@
                 <div class="col-4">
                 </div>
             </div>
-            <input type="submit" value="Initiate Payment" class="btn rounded-pill text-dark box-shadow"
-                   style="font-family:monospace, monospace; font-size:18px; font-weight:bold; background-color:#ffbf3f">
-                   
-            
+            <div class="row">
+                <div class="col-4">
+                </div>
+                <div class="col-4">
+                    <div class="row">
+                        <div>
+                            <form id="conversionForm">
+                                <div class="form-group">
+                                    <label for="SelectedCurrency">Convert from:</label>
+                                    <select asp-for="SelectedCurrency" class="form-control" id="SelectedCurrency" name="selectedCurrency">
+                                        <option value="USD">USD</option>
+                                        <option value="EUR">EUR</option>
+                                        <option value="GBP">GBP</option>
+                                        <!-- Add more currency options as needed -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Amount">Amount:</label>
+                                    <input asp-for="Amount" class="form-control" id="Amount" name="amount" type="number" step="0.01" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="SelectedCrypto">Convert to:</label>
+                                    <select asp-for="SelectedCrypto" class="form-control" id="SelectedCrypto" name="selectedCrypto">
+                                        <option value="Bitcoin">Bitcoin</option>
+                                        <option value="Ethereum">Ethereum</option>
+                                        <option value="Litecoin">Litecoin</option>
+                                        <!-- Add more crypto options as needed -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ConvertedAmount">Converted Amount:</label>
+                                    <input asp-for="ConvertedAmount" class="form-control" id="ConvertedAmount" readonly />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                </div>
+                <div class="col-4 text-center">
+                    <input type="submit" value="Initiate Payment" class="btn rounded-pill text-dark box-shadow"
+                           style="font-family:monospace, monospace; font-size:18px; font-weight:bold; background-color:#ffbf3f">
+                </div>
+                <div class="col-4">
+                </div>
+            </div>
+            <br/>
         </form>
     </div>
     
+}
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#SelectedCurrency, #Amount, #SelectedCrypto').on('change input', function () {
+                var selectedCurrency = $('#SelectedCurrency').val();
+                var amount = $('#Amount').val();
+                var selectedCrypto = $('#SelectedCrypto').val();
+
+                if (selectedCurrency && amount && selectedCrypto) {
+                    $.post('@Url.Action("ConvertCurrency")', { selectedCurrency: selectedCurrency, amount: amount, selectedCrypto: selectedCrypto }, function (data) {
+                        $('#ConvertedAmount').val(data.convertedAmount);
+                    });
+                }
+            });
+        });
+    </script>
 }
