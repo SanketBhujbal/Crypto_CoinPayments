@@ -65,9 +65,9 @@ namespace CoinPayment_POC.Controllers
                 ["item_name"] = orderModel.ProductName,
 
                 //IPN, success and cancel URL  
-                ["success_url"] = $"{storeLocation}"+ ConfigurationConstants.success_url +"{orderModel.OrderId}",
-                ["ipn_url"] = $"{storeLocation}"+ ConfigurationConstants.ipn_url+" ",
-                ["cancel_url"] = $"{storeLocation}" + ConfigurationConstants.cancel_url + "",
+                ["success_url"] = $"{storeLocation}/CoinPayments/SuccessHandler?orderNumber={orderModel.OrderId}",
+                ["ipn_url"] = $"{storeLocation}/CoinPayments/IPNHandler",
+                ["cancel_url"] = $"{storeLocation}/CoinPayments/CancelOrder",
 
                 //order identifier                  
                 ["custom"] = orderModel.OrderId,
