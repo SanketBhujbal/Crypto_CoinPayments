@@ -22,13 +22,13 @@ namespace CoinPayment_POC.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult ProcessCheckout()
+        [HttpPost]
+        public IActionResult ProcessCheckoutAmount(int Amount)
         {
             var model = new OrderModel
             {
                 OrderId = Guid.NewGuid().ToString(),
-                OrderTotal = 5,
+                OrderTotal = Amount,
                 ProductName = "Test payment - Pay By crypto currency",
                 FirstName = "Sanket",
                 LastName = "Bhujbal",

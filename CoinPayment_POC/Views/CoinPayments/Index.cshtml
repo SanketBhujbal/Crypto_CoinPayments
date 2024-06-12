@@ -4,46 +4,114 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    <div class="container bg-light mt-5" style="border-top: 3px solid #26dadd">
-        <form class="text-center p-3" asp-controller="CoinPayments" asp-action="ProcessCheckout" method="get">
-            <h1 style="font-family: monospace,monospace; color: #2726dd;">
-                Bill Summary Conatining Total Amount to be Paid
-            </h1>
-            <div class="row">
-                <div class="col-4">
-                </div>
-                <div class="col-4">
-                <div class="row">
-                        <table class="table fw-bold">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        Total Bill Amount:
-                                    </td>
-                                    <td>
-                                        $5
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Taxes: 
-                                    </td>
-                                    <td>
-                                        As applicable
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                </div>
-                </div>
-                <div class="col-4">
-                </div>
-            </div>
-            <input type="submit" value="Initiate Payment" class="btn rounded-pill text-dark box-shadow"
-                   style="font-family:monospace, monospace; font-size:18px; font-weight:bold; background-color:#ffbf3f">
-                   
-            
-        </form>
-    </div>
-    
+                                <div class="container bg-light mt-5" style="border-top: 3px solid #26dadd">
+                                    <form class="text-center p-3" asp-controller="CoinPayments" asp-action="ProcessCheckoutAmount" method="post">
+                                        <h1 style="font-family: monospace,monospace; color: #2726dd;">
+                                            Bill Summary Containing Total Amount to be Paid
+                                        </h1>
+                                        <div class="row">
+                                            <div class="col-4">
+                                            </div>
+                                            <div class="col-4">
+                                            <div class="row">
+                                                    <table class="table fw-bold">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    Total Bill Amount:
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" id="amountTopay" class="form-control" name="Amount" style="width: 150px; height: 35px;" placeholder="Amount" required="true"/>
+                                                                </td>
+                                                                <td>
+                                                                    <select class="form-select form-select-sm" id="currencyFrom" style="height: 35px;">
+                                                                        <option value="usd" selected>USD</option>
+                                                                        <option value="inr">INR</option>
+                                                                        <option value="gbp">GBP</option>
+                                                                    </select>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Amount in Crypto: 
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number" id="amountInCrypto" class="form-control" name="AmountInCrypto" style="width: 150px; height: 35px;" disabled="true" />
+                                                                </td>
+                                                                <td>
+                                                                <select class="form-select form-select-sm" id="currencyTo" style="height: 35px;" disabled>
+                                                                        <option value="ltct" selected>LTCT</option>
+                                                                        <option value="btc">BTC</option>
+                                                                        <option value="et">ET</option>
+                                                                    </select>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                        
+                                                    </table>
+                                                    <small class="form-text text-muted">Note: Taxes on crypto payments will be applicable.</small>
+                                            </div>
+                                            </div>
+                                            <div class="col-4">
+                                            </div>
+                                        </div>
+                                        <input type="submit" value="Initiate Payment" class="btn rounded-pill text-dark box-shadow mt-2"
+                                               style="font-family:monospace, monospace; font-size:18px; font-weight:bold; background-color:#ffbf3f">
+                                               
+                                        
+                                    </form>
+                                </div>
+  
+}
+@section Scripts{
+    <script>
+        var amountInput = document.getElementById('amountTopay')
+        var amountInCrypto = document.getElementById('amountInCrypto')
+        var currencyFrom = document.getElementById('currencyFrom')
+        var currencyTo = document.getElementById('currencyTo')
+
+
+        const options = { mode: 'cors' , method: 'GET', headers: { accept: 'application/json' }};
+
+        
+        
+        var currencyConversionRateList = {}
+
+        var fetchRateList = function () {
+            fetch('https://api.coingate.com/api/v2/rates', options)
+                .then(response => response.json())
+                .then(response => ( currencyConversionRateList = response ))
+                .catch(err => console.error(err));
+        }
+
+        var calculateConversionRate = function(){
+            var conversionRate = 0
+            if (currencyFrom.value === 'usd') {
+                conversionRate = 0.0122
+            }
+            else if (currencyFrom.value === 'gbp') {
+                conversionRate = 0.016457135
+            }
+            else if (currencyFrom.value === 'inr') {
+                conversionRate = 0.000155235
+            }
+            else {
+                conversionRate = 0
+            }
+            return conversionRate
+        }
+
+
+
+        var calculateRate = function () {
+            fetchRateList()
+            console.log(currencyConversionRateList)
+            amountInCrypto.value = calculateConversionRate()*amountInput.value
+        }
+
+        amountInput.onchange = calculateRate
+        currencyFrom.onchange = calculateRate
+        
+
+    </script>
 }
