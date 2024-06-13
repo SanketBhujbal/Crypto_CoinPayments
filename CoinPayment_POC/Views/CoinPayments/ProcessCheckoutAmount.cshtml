@@ -21,11 +21,11 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        @Html.DisplayNameFor(model => model.OrderTotal)
+                                        @Html.DisplayNameFor(model => model.PaymentAmount)
                                     </td>
                                     <td>
-                                        $@Html.DisplayFor(model => model.OrderTotal)
-                                        @Html.HiddenFor(model => model.OrderTotal)
+                                        $@Html.DisplayFor(model => model.PaymentAmount)
+                                        @Html.HiddenFor(model => model.PaymentAmount)
                                     </td>
                                 </tr>
                                 <tr>
@@ -65,11 +65,11 @@
                             </tr>
                             <tr>
                                 <td>
-                                    @Html.DisplayNameFor(model => model.Email)
+                                    @Html.DisplayNameFor(model => model.EmailAddress)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(model => model.Email)
-                                    @Html.HiddenFor(model => model.Email)
+                                    @Html.DisplayFor(model => model.EmailAddress)
+                                    @Html.HiddenFor(model => model.EmailAddress)
                                 </td>
                             </tr>
                         </table>
