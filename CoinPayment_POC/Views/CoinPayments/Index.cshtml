@@ -4,67 +4,188 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-<div class="container bg-light mt-5" style="border-top: 3px solid #26dadd">
-    <form class="text-center p-3" asp-controller="CoinPayments" asp-action="ProcessCheckoutAmount" method="post">
-        <h1 style="font-family: monospace,monospace; color: #2726dd;">
-            Bill Summary Containing Total Amount to be Paid
-        </h1>
-        <div class="row">
-            <div class="col-4">
-            </div>
-            <div class="col-4">
-            <div class="row">
-                    <table class="table fw-bold">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    Total Bill Amount:
-                                </td>
-                                <td>
-                                    <input type="number" id="amountTopay" class="form-control" name="Amount" style="width: 150px; height: 35px;" placeholder="Amount" required="true"/>
-                                </td>
-                                <td>
-                                    <select class="form-select form-select-sm" id="currencyFrom" style="height: 35px;">
-                                        <option value="usd" selected>USD</option>
-                                        <option value="inr">INR</option>
-                                        <option value="gbp">GBP</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Amount in Crypto: 
-                                </td>
-                                <td>
-                                    <input type="number" id="amountInCrypto" class="form-control" name="AmountInCrypto" style="width: 150px; height: 35px;" disabled="true" />
-                                </td>
-                                <td>
-                                <select class="form-select form-select-sm" id="currencyTo" style="height: 35px;" >
-                                        <option value="ltc" selected>LTC</option>
-                                        <option value="btc">BTC</option>
-                                        <option value="eth">ETH</option>
-                                    </select>
-                                </td>
-                            </tr>
-                        </tbody>
-                                                                                    
-                    </table>
-                    <small class="form-text text-muted">Note: Taxes on crypto payments will be applicable.</small>
-            </div>
-            </div>
-            <div class="col-4">
+    <div class="container bg-light mt-5 p-5" style="border-top: 3px solid #26dadd; min-height: 75vh">
+        <div class="row text-center mb-3">
+            <h2 style="font-family:monospace,monospace; color: #000">
+                Payment Details
+            </h2>
+        </div>
+        <div class="bg-dark" style="min-height: 10vh">
+            <div class="py-2 px-3">
+                <img src="~/images/pay-png.png" style="width: 4rem;" />
             </div>
         </div>
-        <input type="submit" value="Initiate Payment" class="btn rounded-pill text-dark box-shadow mt-2"
-                style="font-family:monospace, monospace; font-size:18px; font-weight:bold; background-color:#ffbf3f">
-                                                                           
-                                                                    
-    </form>
-</div>
-  
+        <form asp-controller="CoinPayments" asp-action="ProcessCheckout" method="post">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button fw-bold" id="personal-information" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Personal Information
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="d-flex justify-content-between">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Enter first name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="middleName">Middle Name</label>
+                                    <input type="text" class="form-control" name="middleName" id="middleName" placeholder="Enter middle name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Enter last name">
+                                </div>
+                            </div>
+                            <div class="form-group my-2">
+                                <label for="serviceAddress">Service Address</label>
+                                <input type="text" class="form-control" name="serviceAddress" id="serviceAddress" placeholder="Enter service address">
+                            </div>
+                            <div class="form-group my-2">
+                                <label for="mailingAddress">Mailing Address</label>
+                                <input type="text" class="form-control" name="mailingAddress" id="mailingAddress" placeholder="Enter mailing address">
+                            </div>
+                            <div class="form-group my-2">
+                                <label for="emailAddress">Email Address</label>
+                                <input type="email" class="form-control" name="emailAddress" id="emailAddress" placeholder="Enter email address">
+                            </div>
+                            <div class="d-flex">
+                                <button type="reset" class="btn btn-secondary">Clear All</button>
+                                <button type="button" class="btn btn-dark mx-2" onclick="goTo('payment-method')">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" id="payment-method" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Payment Method
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    CoinPayments
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" disabled>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Others 1
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" disabled>
+                                <label class="form-check-label" for="flexRadioDefault3">
+                                    Others 2
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" disabled>
+                                <label class="form-check-label" for="flexRadioDefault4">
+                                    Others 3
+                                </label>
+                            </div>
+                            
+                            <div class="d-flex mt-2">
+                                <button type="button" class="btn btn-secondary" onclick="goTo('personal-information')">Back</button>
+                                <button type="button" class="btn btn-dark mx-2" onclick="goTo('payment-information')">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold" id="payment-information" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Payment Information
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            
+                            
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        <table class="table ">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <label for="paymentDate">Payment Date:</label>
+                                                    </td>
+                                                    <td>
+                                                        <input type="date" class="form-control" name="paymentDate" id="paymentDate" style="width: 150px;">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Total Bill Amount:
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" id="amountTopay" class="form-control" name="paymentAmount" style="width: 150px; height: 35px;" placeholder="Amount" required="true" />
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-select form-select-sm" id="currencyFrom" style="height: 35px;">
+                                                            <option value="usd" selected>USD</option>
+                                                            <option value="inr">INR</option>
+                                                            <option value="gbp">GBP</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Amount in Crypto:
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" id="amountInCrypto" class="form-control" name="AmountInCrypto" style="width: 150px; height: 35px;" disabled="true" />
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-select form-select-sm" id="currencyTo" style="height: 35px;">
+                                                            <option value="ltc" selected>LTC</option>
+                                                            <option value="btc">BTC</option>
+                                                            <option value="eth">ETH</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                        <small class="form-text text-muted">Note: Taxes on crypto payments will be applicable.</small>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                   
+                                </div>
+                                
+                            </div>
+                            <div class="d-flex mt-2">
+                                <button type="button" class="btn btn-secondary" onclick="goTo('payment-method')">Back</button>
+                                <button type="submit" class="btn btn-warning mx-2">Summary</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 }
-@section Scripts{
+
+@section Scripts
+{
     <script>
+        function goTo(accordian) {
+            document.getElementById(accordian).click();
+        }
+
+
         var amountInput = document.getElementById('amountTopay')
         var amountInCrypto = document.getElementById('amountInCrypto')
         var currencyFrom = document.getElementById('currencyFrom')
@@ -73,8 +194,8 @@
 
 
         var api_key = 'ftbH469QBVdGOhTP9Buk'
-        
-        
+
+
 
         var requestOptions = {
             method: 'GET',
@@ -82,51 +203,36 @@
         };
 
         var fetchRate = async function (callback) {
-            return fetch(' https://marketdata.tradermade.com/api/v1/convert?api_key=' + 
-            api_key + 
-            '&from=' + 
-            currencyFrom.value.toUpperCase() + 
-            '&to=' + currencyTo.value.toUpperCase() + 
-            '&amount=' + 
-            amountInput.value, 
-            requestOptions)
+            return fetch(' https://marketdata.tradermade.com/api/v1/convert?api_key=' +
+                api_key +
+                '&from=' +
+                currencyFrom.value.toUpperCase() +
+                '&to=' + currencyTo.value.toUpperCase() +
+                '&amount=' +
+                amountInput.value,
+                requestOptions)
                 .then(response => response.text())
                 .then((result) => {
                     console.log(result)
                     return result
                 })
-            .catch(error => console.log('error', error));
+                .catch(error => console.log('error', error));
         }
 
-        var calculateConversionRate = function(){
-            var conversionRate = 0
-            if (currencyFrom.value === 'usd') {
-                conversionRate = 0.0122
-            }
-            else if (currencyFrom.value === 'gbp') {
-                conversionRate = 0.016457135
-            }
-            else if (currencyFrom.value === 'inr') {
-                conversionRate = 0.000155235
-            }
-            else {
-                conversionRate = 0
-            }
-            return conversionRate
-        }
+        
 
 
 
         var calculateRate = async function () {
             let conversionResult
             await fetchRate()
-                .then((data) => { 
+                .then((data) => {
                     conversionResult = data
                 })
             console.log(conversionResult)
 
             amountInCrypto.value = JSON.parse(conversionResult).total
-            
+
         }
 
         amountInput.onchange = function () {
@@ -138,7 +244,10 @@
         }
         currencyFrom.onchange = calculateRate
         currencyTo.onchange = calculateRate
-        
+
+
+
+
 
     </script>
 }

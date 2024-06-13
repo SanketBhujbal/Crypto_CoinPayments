@@ -1,44 +1,33 @@
 ﻿using CoinPayment_POC.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
-using System.Security.Cryptography;
 using System.Text;
 
-namespace CoinPayment_POC.Controllers
-{
-    public class CoinPaymentsController : Controller
-    {
+namespace CoinPayment_POC.Controllers {
+    public class CoinPaymentsController : Controller {
         private readonly IConfiguration _configuration;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public CoinPaymentsController(IConfiguration configuration,
-            IHttpContextAccessor httpContextAccessor)
-        {
+            IHttpContextAccessor httpContextAccessor) {
             _configuration = configuration;
             _httpContextAccessor = httpContextAccessor;
         }
-        public IActionResult Index()
-        {
+
+        public IActionResult Index() {
             return View();
         }
 
         [HttpPost]
-        public IActionResult ProcessCheckoutAmount(int Amount)
-        {
-            var model = new OrderModel
-            {
-                OrderId = Guid.NewGuid().ToString(),
-                OrderTotal = Amount,
-                ProductName = "Test payment - Pay By crypto currency",
-                FirstName = "Sanket",
-                LastName = "Bhujbal",
-                Email = "sanketbhujbal.sb@gmail.com"
-            };
-            return View(model);
+        public IActionResult ProcessCheckout([FromForm] OrderModel reqModel) {
+            reqModel.OrderId = Guid.NewGuid().ToString();
+            reqModel.ProductName = "Test payment - Pay By crypto currency";
+
+            return View(reqModel);
         }
+
         [HttpPost]
-        public void ProcessCheckout(OrderModel orderModel)
-        {
+        public void ProcessCheckout2(OrderModel orderModel) {
             var queryParameters = CreateQueryParameters(orderModel);
 
             var baseUrl = _configuration.GetSection("CoinPayments")["BaseUrl"];
@@ -46,13 +35,12 @@ namespace CoinPayment_POC.Controllers
 
             _httpContextAccessor.HttpContext.Response.Redirect(redirectUrl);
         }
-        private IDictionary<string, string> CreateQueryParameters(OrderModel orderModel)
-        {
+
+        private IDictionary<string, string> CreateQueryParameters(OrderModel orderModel) {
             //get store location  
             var storeLocation = $"{Request.Scheme}://{Request.Host}{Request.PathBase}";
 
-            var queryParameters = new Dictionary<string, string>()
-            {
+            var queryParameters = new Dictionary<string, string>() {
                 //IPN settings  
                 ["ipn_version"] = ConfigurationConstants.ipn_version,
                 ["cmd"] = ConfigurationConstants.cmd,
@@ -61,7 +49,7 @@ namespace CoinPayment_POC.Controllers
                 ["merchant"] = _configuration.GetSection("CoinPayments")["MerchantId"],
                 ["allow_extra"] = ConfigurationConstants.allow_extra,
                 ["currency"] = ConfigurationConstants.currency,
-                ["amountf"] = orderModel.OrderTotal.ToString("N2"),
+                //["amountf"] = orderModel.PaymentAmount.ToString("N2"),
                 ["item_name"] = orderModel.ProductName,
 
                 //IPN, success and cancel URL  
@@ -75,29 +63,25 @@ namespace CoinPayment_POC.Controllers
                 //billing info  
                 ["first_name"] = orderModel.FirstName,
                 ["last_name"] = orderModel.LastName,
-                ["email"] = orderModel.Email,
 
             };
             return queryParameters;
         }
 
-        public IActionResult SuccessHandler(string orderNumber)
-        {
+        public IActionResult SuccessHandler(string orderNumber) {
             ViewBag.OrderNumber = orderNumber;
 
             return View("PaymentResponse");
         }
 
-        public IActionResult CancelOrder()
-        {
+        public IActionResult CancelOrder() {
             return View("PaymentResponse");
         }
+
         [HttpPost]
-        public IActionResult IPNHandler()
-        {
+        public IActionResult IPNHandler() {
             byte[] parameters;
-            using (var stream = new MemoryStream())
-            {
+            using (var stream = new MemoryStream()) {
                 Request.Body.CopyTo(stream);
                 parameters = stream.ToArray();
             }
@@ -105,8 +89,7 @@ namespace CoinPayment_POC.Controllers
             var ipnSecret = _configuration.GetSection("CoinPayments")["IpnSecret"];
 
             if (Helper.VerifyIpnResponse(strRequest, Request.Headers["hmac"], ipnSecret,
-                out Dictionary<string, string> values))
-            {
+                out Dictionary<string, string> values)) {
                 values.TryGetValue(ConfigurationConstants.first_name, out string firstName);
                 values.TryGetValue(ConfigurationConstants.last_name, out string lastName);
                 values.TryGetValue(ConfigurationConstants.email, out string email);
@@ -117,30 +100,24 @@ namespace CoinPayment_POC.Controllers
 
                 var newPaymentStatus = Helper.GetPaymentStatus(status, statusText);
 
-                switch (newPaymentStatus)
-                {
-                    case PaymentStatus.Pending:
-                        {
+                switch (newPaymentStatus) {
+                    case PaymentStatus.Pending: {
                             //TODO: update order status and use logging mechanism
                             //order is pending                      
                         }
                         break;
-                    case PaymentStatus.Authorized:
-                        {
+                    case PaymentStatus.Authorized: {
                             //order is authorized                      
                         }
                         break;
-                    case PaymentStatus.Paid:
-                        {
+                    case PaymentStatus.Paid: {
                             //order is paid                      
                         }
                         break;
                     default:
                         break;
                 }
-            }
-            else
-            {
+            } else {
                 //Issue Occurred with CoinPayments IPN  
             }
 
