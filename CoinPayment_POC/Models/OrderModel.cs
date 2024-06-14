@@ -29,6 +29,6 @@ namespace CoinPayment_POC.Models {
         public string PaymentDate { get; set; }
 
         [DisplayName("Payment Amount")]
-        public string PaymentAmount { get; set; }
+        public decimal PaymentAmount { get; set; }
     }
 }

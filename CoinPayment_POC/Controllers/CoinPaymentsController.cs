@@ -27,7 +27,7 @@ namespace CoinPayment_POC.Controllers {
         }
 
         [HttpPost]
-        public void ProcessCheckout2(OrderModel orderModel) {
+        public void MakePayment(OrderModel orderModel) {
             var queryParameters = CreateQueryParameters(orderModel);
 
             var baseUrl = _configuration.GetSection("CoinPayments")["BaseUrl"];
@@ -49,7 +49,7 @@ namespace CoinPayment_POC.Controllers {
                 ["merchant"] = _configuration.GetSection("CoinPayments")["MerchantId"],
                 ["allow_extra"] = ConfigurationConstants.allow_extra,
                 ["currency"] = ConfigurationConstants.currency,
-                //["amountf"] = orderModel.PaymentAmount.ToString("N2"),
+                ["amountf"] = orderModel.PaymentAmount.ToString("N2"),
                 ["item_name"] = orderModel.ProductName,
 
                 //IPN, success and cancel URL  
@@ -63,6 +63,7 @@ namespace CoinPayment_POC.Controllers {
                 //billing info  
                 ["first_name"] = orderModel.FirstName,
                 ["last_name"] = orderModel.LastName,
+                ["email"] = orderModel.EmailAddress
 
             };
             return queryParameters;
