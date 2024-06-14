@@ -5,71 +5,164 @@
 *@
 @model CoinPayment_POC.Models.OrderModel
 @{
-    <div class="container text-center text-light p-3 font-monospace">
+    <div class="container text-center text-light p-3 font-">
         <h1>Pay Bill</h1>
-        <form class="mt-3" asp-controller="CoinPayments" asp-action="ProcessCheckout" method="post">
+        <form class="mt-3" asp-controller="CoinPayments" asp-action="MakePayment" method="post">
            <div class="bg-light p-3" style="border-top:3px solid #26dadd">
                 <div class="row">
                     <div class="col-6">
-                        <h3 style="font-family:monospace,monospace; color: #2726dd">
+                        <h3 style="font-family:,; color: #2726dd">
                             Bill Details
                         </h3>
-                        <table class="table text-dark fw-bold">
+                        <table class="table text-dark">
 
                             @Html.HiddenFor(model => model.OrderId)
 
                             <tbody>
                                 <tr>
-                                    <td>
-                                        @Html.DisplayNameFor(model => model.OrderTotal)
+                                    <td class="fw-bold text-start">
+                                        @Html.DisplayNameFor(model => model.PaymentDate)
                                     </td>
-                                    <td>
-                                        $@Html.DisplayFor(model => model.OrderTotal)
-                                        @Html.HiddenFor(model => model.OrderTotal)
+                                    <td class="text-start">
+                                        @if(Model.PaymentDate != null)
+                                        {
+                                            @Html.DisplayFor(model => model.PaymentDate)
+                                            @Html.HiddenFor(model => model.PaymentDate)
+                                        }
+                                        else
+                                        {
+                                            <div>NA</div>
+                                        }
+
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="fw-bold text-start">
+                                        @Html.DisplayNameFor(model => model.PaymentAmount)
+                                    </td>
+                                    <td class="text-start">
+                                        $@Html.DisplayFor(model => model.PaymentAmount)
+                                        @Html.HiddenFor(model => model.PaymentAmount)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold text-start">
                                         @Html.DisplayNameFor(model => model.ProductName)
                                     </td>
-                                    <td>
-                                        @Html.DisplayFor(model => model.ProductName)
-                                        @Html.HiddenFor(model => model.ProductName)
+                                    <td class="text-start">
+                                        @if (Model.ProductName != null)
+                                        {
+                                            @Html.DisplayFor(model => model.ProductName)
+                                            @Html.HiddenFor(model => model.ProductName)
+                                        }
+                                        else
+                                        {
+                                            <div>NA</div>
+                                        }
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="col-6">
-                        <h3 style="font-family:monospace,monospace; color: #2726dd">
+                        <h3 style="font-family:,; color: #2726dd">
                             Billing Info
                         </h3>
-                        <table class="table text-dark fw-bold">
+                        <table class="table text-dark">
                             <tr>
-                                <td>
+                                <td class="fw-bold text-start">
                                     @Html.DisplayNameFor(model => model.FirstName)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(model => model.FirstName)
-                                    @Html.HiddenFor(model => model.FirstName)
+                                <td class="text-start">
+                                    @if(Model.FirstName != null)
+                                    {
+                                        @Html.DisplayFor(model => model.FirstName)
+                                        @Html.HiddenFor(model => model.FirstName)
+                                    }
+                                    else
+                                    {
+                                        <div>Sumit Ranjan</div>
+                                    }
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td class="fw-bold text-start">
+                                    @Html.DisplayNameFor(model => model.MiddleName)
+                                </td>
+                                <td class="text-start">
+                                    @if(Model.MiddleName != null)
+                                    {
+                                        @Html.DisplayFor(model => model.MiddleName)
+                                        @Html.HiddenFor(model => model.MiddleName)
+                                    }
+                                    else
+                                    {
+                                        <div>NA</div>
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-start">
                                     @Html.DisplayNameFor(model => model.LastName)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(model => model.LastName)
-                                    @Html.HiddenFor(model => model.LastName)
+                                <td class="text-start">
+                                    @if(Model.LastName != null)
+                                    {
+                                        @Html.DisplayFor(model => model.LastName)
+                                        @Html.HiddenFor(model => model.LastName)
+                                    }
+                                    else
+                                    {
+                                        <div>NA</div>
+                                    }
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    @Html.DisplayNameFor(model => model.Email)
+                                <td class="fw-bold text-start">
+                                    @Html.DisplayNameFor(model => model.ServiceAddress)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(model => model.Email)
-                                    @Html.HiddenFor(model => model.Email)
+                                <td class="text-start">
+                                    @if(Model.ServiceAddress != null)
+                                    {
+                                        @Html.DisplayFor(model => model.ServiceAddress)
+                                        @Html.HiddenFor(model => model.ServiceAddress)
+                                    }
+                                    else
+                                    {
+                                        <div>NA</div>
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-start">
+                                    @Html.DisplayNameFor(model => model.MailingAddress)
+                                </td>
+                                <td class="text-start">
+                                    @if(Model.MailingAddress != null)
+                                    {
+                                        @Html.DisplayFor(model => model.MailingAddress)
+                                        @Html.HiddenFor(model => model.MailingAddress)
+                                    }
+                                    else
+                                    {
+                                        <div>NA</div>
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold text-start">
+                                    @Html.DisplayNameFor(model => model.EmailAddress)
+                                </td>
+                                <td class="text-start">
+                                    @if(Model.EmailAddress != null)
+                                    {
+                                        @Html.DisplayFor(model => model.EmailAddress)
+                                        @Html.HiddenFor(model => model.EmailAddress)
+                                    }
+                                    else
+                                    {
+                                        <div>NA</div>
+                                    }
                                 </td>
                             </tr>
                         </table>
@@ -78,7 +171,7 @@
                 <input type="submit" 
                 class="btn rounded-pill text-dark box-shadow"
                 value="Make Payment"
-                style="font-family:monospace, monospace; font-size:18px; font-weight:bold; background-color:#ffbf3f" />
+                style="font-family:, ; font-size:18px; font-weight:bold; background-color:#ffbf3f" />
                 <span>
                     <p class="mt-2">
                         <img src="~/images/pngfind.com-centurylink-logo-png-6483786.png" alt="Coinpayments Logo" style="width: 10%;" />
