@@ -5,13 +5,13 @@
 *@
 @model CoinPayment_POC.Models.OrderModel
 @{
-    <div class="container text-center text-light p-3 font-monospace">
+    <div class="container text-center text-light p-3 font-">
         <h1>Pay Bill</h1>
         <form class="mt-3" asp-controller="CoinPayments" asp-action="ProcessCheckout" method="post">
            <div class="bg-light p-3" style="border-top:3px solid #26dadd">
                 <div class="row">
                     <div class="col-6">
-                        <h3 style="font-family:monospace,monospace; color: #2726dd">
+                        <h3 style="font-family:,; color: #2726dd">
                             Bill Details
                         </h3>
                         <table class="table text-dark fw-bold">
@@ -41,7 +41,7 @@
                         </table>
                     </div>
                     <div class="col-6">
-                        <h3 style="font-family:monospace,monospace; color: #2726dd">
+                        <h3 style="font-family:,; color: #2726dd">
                             Billing Info
                         </h3>
                         <table class="table text-dark fw-bold">
@@ -78,7 +78,7 @@
                 <input type="submit" 
                 class="btn rounded-pill text-dark box-shadow"
                 value="Make Payment"
-                style="font-family:monospace, monospace; font-size:18px; font-weight:bold; background-color:#ffbf3f" />
+                style="font-family:, ; font-size:18px; font-weight:bold; background-color:#ffbf3f" />
                 <span>
                     <p class="mt-2">
                         <img src="~/images/pngfind.com-centurylink-logo-png-6483786.png" alt="Coinpayments Logo" style="width: 10%;" />
