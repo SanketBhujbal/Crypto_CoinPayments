@@ -1,13 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace CoinPayment_POC.Models
-{
-    public class OrderModel
-    {
+namespace CoinPayment_POC.Models {
+    public class OrderModel {
         public string OrderId { get; set; }
-
-        [DisplayName("Total Bill Amount")]
-        public decimal OrderTotal { get; set; }
 
         [DisplayName("Product Name")]
         public string ProductName { get; set; }
@@ -15,10 +10,25 @@ namespace CoinPayment_POC.Models
         [DisplayName("First Name")]
         public string FirstName { get; set; }
 
+        [DisplayName("Middle Name")]
+        public string MiddleName { get; set; }
+
         [DisplayName("Last Name")]
         public string LastName { get; set; }
 
+        [DisplayName("Service Address")]
+        public string ServiceAddress { get; set; }
+
+        [DisplayName("Mailing Address")]
+        public string MailingAddress { get; set; }
+
         [DisplayName("Email Address")]
-        public string Email { get; set; }
+        public string EmailAddress { get; set; }
+
+        [DisplayName("Payment Date")]
+        public string PaymentDate { get; set; }
+
+        [DisplayName("Payment Amount")]
+        public decimal PaymentAmount { get; set; }
     }
 }
