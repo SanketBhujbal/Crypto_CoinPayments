@@ -19,11 +19,14 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-image: url('../images/13182208_5166950.jpg');
+   
+
 }
 
 /* Add a black background color to the top navigation */
 .topnav {
-    background-color: #432b81;
+    background-color: #240c4d;
     overflow: hidden;
 }
 
