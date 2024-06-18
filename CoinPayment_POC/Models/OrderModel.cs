@@ -30,5 +30,8 @@ namespace CoinPayment_POC.Models {
 
         [DisplayName("Payment Amount")]
         public decimal PaymentAmount { get; set; }
+
+        [DisplayName("Currency")]
+        public string Currency { get; set; }
     }
 }

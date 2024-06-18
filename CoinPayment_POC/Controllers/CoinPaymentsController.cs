@@ -48,7 +48,8 @@ namespace CoinPayment_POC.Controllers {
                 ["ipn_mode"] = ConfigurationConstants.ipn_mode,
                 ["merchant"] = _configuration.GetSection("CoinPayments")["MerchantId"],
                 ["allow_extra"] = ConfigurationConstants.allow_extra,
-                ["currency"] = ConfigurationConstants.currency,
+                //["currency"] = ConfigurationConstants.currency,
+                ["currency"] = orderModel.Currency,
                 ["amountf"] = orderModel.PaymentAmount.ToString("N2"),
                 ["item_name"] = orderModel.ProductName,
 

@@ -41,7 +41,9 @@
                                         @Html.DisplayNameFor(model => model.PaymentAmount)
                                     </td>
                                     <td class="text-start">
-                                        $@Html.DisplayFor(model => model.PaymentAmount)
+                                        @Html.DisplayFor(model => model.PaymentAmount)
+                                        @Html.DisplayFor(model => model.Currency)
+                                        @Html.HiddenFor(model => model.Currency)
                                         @Html.HiddenFor(model => model.PaymentAmount)
                                     </td>
                                 </tr>
